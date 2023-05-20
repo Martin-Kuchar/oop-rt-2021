@@ -24,9 +24,6 @@ public class Tree extends JPanel{
         oldY = y;
         this.setLocation(x, y);
         this.setSize(width, height);
-
-        System.out.println(this.getLocation());
-        System.out.println(this.getX() + " " + this.getY());
         this.c = c;
 
     }
@@ -34,15 +31,7 @@ public class Tree extends JPanel{
     @Override
     public void paint(Graphics g) {
         g.setColor(c);
-        //g.drawRect(this.getX(), getY(), this.getWidth(), this.getHeight());
-        //g.fillRect(0, this.getHeight()/2, this.getWidth(), 0);
-       
         g.fillRect(this.getWidth()/3, this.getHeight()/2, this.getWidth()/3, this.getHeight()/2);
-
-        //g.fillRect(0, 0, 10, 10);    
-        //g.fillRect(0, 0, 10, 10); 
-
         g.fillOval(0, 0, this.getWidth(), (this.getHeight()/3)*2);
-        
     }
 }

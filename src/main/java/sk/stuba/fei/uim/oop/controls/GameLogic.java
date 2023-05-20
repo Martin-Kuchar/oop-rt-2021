@@ -62,8 +62,6 @@ public class GameLogic extends UniversalAdapter {
                 int offX = t.getOldX() - e.getX();
                 int offY = t.getOldY() - e.getY();
     
-                System.out.println(offX);
-    
                 t.setLocation(t.getX() - offX, t.getY() - offY);
     
                 t.setOldX(e.getX());
