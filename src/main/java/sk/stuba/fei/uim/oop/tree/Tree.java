@@ -34,4 +34,22 @@ public class Tree extends JPanel{
         g.fillRect(this.getWidth()/3, this.getHeight()/2, this.getWidth()/3, this.getHeight()/2);
         g.fillOval(0, 0, this.getWidth(), (this.getHeight()/3)*2);
     }
+
+    public boolean isInside(int x, int y) {
+        if ((x > this.getWidth()/3 && x < (this.getWidth()/3)*2 && y > this.getHeight()/2) || (this.inInElipse(x, y))) {return true;}
+
+        return false;
+    }
+    
+    private boolean inInElipse(int x, int y) {
+
+        double p = ((double)Math.pow((x - this.getWidth()/2), 2)
+                    / (double)Math.pow(this.getWidth()/2, 2))
+                   + ((double)Math.pow((y - this.getHeight()/3), 2)
+                      / (double)Math.pow(this.getHeight()/3, 2));
+        
+        if (p <=1) {return true;}
+        
+        return false;
+    }
 }

@@ -52,24 +52,24 @@ public class GameLogic extends UniversalAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
 
-        if(move) {
-            Component c = (Component)this.render.getComponentAt(e.getPoint());
-            this.render.setComponentZOrder(c, 0);
-            if (c instanceof Tree) {
-    
-                Tree t = ((Tree)c);
-    
-                int offX = t.getOldX() - e.getX();
-                int offY = t.getOldY() - e.getY();
-    
-                t.setLocation(t.getX() - offX, t.getY() - offY);
-    
-                t.setOldX(e.getX());
-                t.setOldY(e.getY());
+        Component c = (Component)this.render.getComponentAt(e.getPoint());
+        if (c instanceof Tree) {
+            Tree t = ((Tree)c);
+            if(move && t.isInside(e.getX()-t.getX(), e.getY()-t.getY())) {
+                this.render.setComponentZOrder(c, 0);
+        
+        
+                    int offX = t.getOldX() - e.getX();
+                    int offY = t.getOldY() - e.getY();
+        
+                    t.setLocation(t.getX() - offX, t.getY() - offY);
+        
+                    t.setOldX(e.getX());
+                    t.setOldY(e.getY());
+                }
             }
-        }
 
-        else {
+        if(!move) {
             if (this.newTree == null) {
                 this.newTree = new Tree(this.c, this.newTreeX, this.newTreeY, this.newTreeX - e.getX(), this.newTreeY - e.getY());
                 this.render.addTree(newTree);
